@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { cardVariant, categoryGradient, getFoodEmoji } from '../utils/animations';
 import { useLang, pick } from '../context/LangContext';
+import { assetUrl } from '../lib/asset';
 
 export default function ProductCard({ product }) {
   const { lang, tr } = useLang();
@@ -21,7 +22,7 @@ export default function ProductCard({ product }) {
         {/* Image */}
         <div className="relative aspect-square overflow-hidden">
           {product.image ? (
-            <img src={product.image} alt={name} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <img src={assetUrl(product.image)} alt={name} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
           ) : (
             <div className={`w-full h-full bg-gradient-to-br ${gradient} flex items-center justify-center`}>
               <span className="text-5xl drop-shadow-sm">{emoji}</span>

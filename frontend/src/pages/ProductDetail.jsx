@@ -5,6 +5,7 @@ import api from '../api/axios';
 import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 import { staggerContainer, cardVariant, categoryGradient, getFoodEmoji } from '../utils/animations';
+import { assetUrl } from '../lib/asset';
 
 function SizeButton({ size, selected, onClick }) {
   return (
@@ -108,7 +109,7 @@ export default function ProductDetail() {
           className="mt-4 rounded-3xl overflow-hidden aspect-video max-h-80"
         >
           {product.image ? (
-            <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+            <img src={assetUrl(product.image)} alt={product.name} className="w-full h-full object-cover" />
           ) : (
             <div className={`w-full h-full bg-gradient-to-br ${gradient} flex items-center justify-center`}>
               <span className="text-8xl drop-shadow-lg">{emoji}</span>

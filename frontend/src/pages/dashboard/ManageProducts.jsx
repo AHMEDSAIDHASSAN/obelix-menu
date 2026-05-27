@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../../api/axios';
+import { assetUrl } from '../../lib/asset';
 
 const EMPTY_FORM = {
   name: '', nameAr: '', description: '', descriptionAr: '',
@@ -256,7 +257,7 @@ export default function ManageProducts() {
                 <label className="text-xs font-medium text-gray-700">الصورة</label>
                 <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files[0]; setImageFile(f); setPreview(URL.createObjectURL(f)); }}
                   className="mt-1 w-full text-sm" />
-                {preview && <img src={preview} alt="" className="mt-2 w-24 h-24 rounded-xl object-cover" />}
+                {preview && <img src={assetUrl(preview)} alt="" className="mt-2 w-24 h-24 rounded-xl object-cover" />}
               </div>
             </div>
 
@@ -281,7 +282,7 @@ export default function ManageProducts() {
               <div key={item._id} className="bg-white rounded-2xl shadow-sm overflow-hidden">
                 <div className="relative aspect-video bg-cream-dark">
                   {item.image ? (
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    <img src={assetUrl(item.image)} alt={item.name} className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-4xl">🍽️</div>
                   )}

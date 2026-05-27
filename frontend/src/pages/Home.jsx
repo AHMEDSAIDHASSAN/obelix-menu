@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard';
 import { SkeletonCard, SkeletonBanner, SkeletonChips } from '../components/SkeletonCard';
 import { staggerContainer, getFoodEmoji } from '../utils/animations';
 import { useLang, pick } from '../context/LangContext';
+import { assetUrl } from '../lib/asset';
 
 /* ─── Offers Banner ─────────────────────────────────────── */
 function OffersBanner({ offers }) {
@@ -34,7 +35,7 @@ function OffersBanner({ offers }) {
           </div>
           <motion.div initial={{ scale: 0.6, rotate: -10, opacity: 0 }} animate={{ scale: 1, rotate: 0, opacity: 1 }} transition={{ delay: 0.1, type: 'spring', stiffness: 180 }} className="shrink-0">
             {offer.image
-              ? <img src={offer.image} alt={offer.title} className="w-28 h-28 md:w-40 md:h-40 object-cover rounded-full shadow-2xl ring-4 ring-white/30" />
+              ? <img src={assetUrl(offer.image)} alt={offer.title} className="w-28 h-28 md:w-40 md:h-40 object-cover rounded-full shadow-2xl ring-4 ring-white/30" />
               : <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-white/20 flex items-center justify-center text-6xl shadow-2xl">{getFoodEmoji(offer.title)}</div>
             }
           </motion.div>
@@ -93,7 +94,7 @@ function CategoryChip({ cat, active, onClick }) {
       className={`relative inline-flex items-center gap-2 px-2.5 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${active ? 'text-white' : 'bg-white text-gray-700 card-shadow hover:shadow-md'}`}>
       {active && <motion.span layoutId="activeCat" className="absolute inset-0 bg-primary rounded-full" transition={{ type: 'spring', stiffness: 400, damping: 30 }} />}
       {cat.image
-        ? <img src={cat.image} alt="" className="relative z-10 w-6 h-6 rounded-full object-cover shrink-0" />
+        ? <img src={assetUrl(cat.image)} alt="" className="relative z-10 w-6 h-6 rounded-full object-cover shrink-0" />
         : <span className="relative z-10 shrink-0">🍽️</span>
       }
       <span className="relative z-10">{cat.name}</span>

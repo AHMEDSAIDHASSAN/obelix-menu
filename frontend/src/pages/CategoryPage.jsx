@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 import { SkeletonCard } from '../components/SkeletonCard';
 import { staggerContainer, categoryGradient } from '../utils/animations';
+import { assetUrl } from '../lib/asset';
 
 export default function CategoryPage() {
   const { id } = useParams();
@@ -54,7 +55,7 @@ export default function CategoryPage() {
 
           <div className="shrink-0">
             {category?.image ? (
-              <img src={category.image} alt={category?.name} className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl object-cover shadow-lg ring-2 ring-white/30" />
+              <img src={assetUrl(category.image)} alt={category?.name} className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl object-cover shadow-lg ring-2 ring-white/30" />
             ) : (
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/20 flex items-center justify-center text-2xl sm:text-3xl shadow-lg">🍽️</div>
             )}
